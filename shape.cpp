@@ -80,6 +80,30 @@ void shape::translateBy(int X, int Y)
     mYCentre += Y;
 }
 
+//Legacy Code from attempt to provide general 2D matrix multiplication
+/*int shape::arrsize(GLDouble arr[])
+{
+    return sizeof(arr/arr[0]);
+}
+
+int shape::matsize(GLDouble matrix[][])
+{
+    int dim[2];
+    dim[0] = arrsize(matrix);
+    dim[1] = arrsize(matrix[]);
+    return dim;
+}*/
+
+GLDouble shape::matmult(GLDouble mata[][], GLDouble matb[][])
+{
+    int x[2] = matsize(mata); int y[2] = matsize(matb);
+    if (x[0] != y[1])
+        return 0;
+    GDouble matc[y[0]][x[1]];
+    int i, j, k, l;
+
+}
+
 
 bool shape::inside(int x, int y)
 {

@@ -94,13 +94,21 @@ int shape::matsize(GLDouble matrix[][])
     return dim;
 }*/
 
-GLDouble shape::matmult(GLDouble mata[][], GLDouble matb[][])
+GLDouble shape::matmult(GLDouble mata[3][3], GLDouble matb[3][3])
 {
-    int x[2] = matsize(mata); int y[2] = matsize(matb);
-    if (x[0] != y[1])
-        return 0;
-    GDouble matc[y[0]][x[1]];
-    int i, j, k, l;
+    GLDouble matc[3][3];
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            int l = 0;
+            for (int k = 0; k < 3; k++)
+            {
+                l += mata[j][k]*matb[k][i];
+            }
+            matc[j][i] = l;
+        }
+    }
 
 }
 

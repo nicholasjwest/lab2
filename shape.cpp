@@ -94,9 +94,9 @@ int shape::matsize(GLDouble matrix[][])
     return dim;
 }*/
 
-GLDouble shape::matmult(GLDouble mata[3][3], GLDouble matb[3][3])
+GLdouble shape::matmult(GLdouble mata[3][3], GLdouble matb[3][3])
 {
-    GLDouble matc[3][3];
+    GLdouble matc[3][3];
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)

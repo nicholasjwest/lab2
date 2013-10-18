@@ -15,7 +15,7 @@ circle::circle(int XCentre, int YCentre, const QColor& colour,
 
 void circle::drawShape()
 {
-    const unsigned int numCoords = 1000;
+    const unsigned int numCoords = 6;
 
     //Draw 1000 coordinates of the circle
     for(unsigned int i = 0;

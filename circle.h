@@ -2,12 +2,20 @@
 #define CIRCLE_H
 
 #include "shape.h"
+#include "matmath.h"
+#include "mat.h"
+#include "vect.h"
 
 class circle : public shape
 {
 public:
     circle (int XCentre, int YCentre, const QColor& colour,
             const QColor& selectedColour, unsigned int radius);
+    void setSides(int i);
+    int sides;
+    matmath matrixmath;
+    mat matrix;
+    mat transmat;
 
 private:
     //Implemented functions for drawing and checking if inside the shape, specified by the base class, shape
@@ -15,6 +23,7 @@ private:
     virtual bool insideZeroCentredShape(int x, int y);
 
     unsigned int mRadius;
+
 };
 
 #endif // CIRCLE_H

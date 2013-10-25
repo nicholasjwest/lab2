@@ -20,7 +20,7 @@ public:
 
     void translateBy(int X, int Y);
 
-    GLdouble matmult(GLdouble mata[3][3], GLdouble matb[3][3]);
+    virtual void setSides(int i){}
 
     //This is a public method called to check if the co-ordinates are inside the shape
     bool inside(int x, int y);
@@ -36,6 +36,7 @@ private:
 
     int mXCentre;
     int mYCentre;
+    int sides;
 
     QColor mNormalColour;
     QColor mSelectedColour;

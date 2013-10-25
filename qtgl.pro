@@ -11,15 +11,17 @@ INCLUDEPATH += .
 HEADERS += glwidget.h \
     window.h \
     shape.h \
-    square.h \
     version.h \
     circle.h \
-    matmath.h
+    matmath.h \
+    mat.h \
+    vect.h
 FORMS += MainWindow.ui
 SOURCES += glwidget.cpp \
     main.cpp \
     window.cpp \
     shape.cpp \
-    square.cpp \
     circle.cpp \
-    matmath.cpp
+    matmath.cpp \
+    mat.cpp \
+    vect.cpp

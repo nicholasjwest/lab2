@@ -45,6 +45,7 @@ private:
     std::list<shape_ptr> mShapes;
 
     shape_ptr mSelectedShape;
+    shape_ptr nSelectedShape;
     //Store the location the user clicked
     int mClickLocationX;
     int mClickLocationY;
@@ -58,7 +59,7 @@ private:
 public slots:
     void clear();
     void newCircle();
-    void newSquare();
+    void setSides(int i);
 };
 
 

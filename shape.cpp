@@ -1,4 +1,5 @@
 #include "shape.h"
+#include "circle.h"
 
 shape::shape(int XCentre, int YCentre, const QColor& colour, const QColor& selectedColour):
   mXCentre(XCentre),
@@ -80,39 +81,6 @@ void shape::translateBy(int X, int Y)
     mYCentre += Y;
 }
 
-//Legacy Code from attempt to provide general 2D matrix multiplication
-/*int shape::arrsize(GLDouble arr[])
-{
-    return sizeof(arr/arr[0]);
-}
-
-int shape::matsize(GLDouble matrix[][])
-{
-    int dim[2];
-    dim[0] = arrsize(matrix);
-    dim[1] = arrsize(matrix[]);
-    return dim;
-}*/
-
-GLdouble shape::matmult(GLdouble mata[3][3], GLdouble matb[3][3])
-{
-    GLdouble matc[3][3];
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            int l = 0;
-            for (int k = 0; k < 3; k++)
-            {
-                l += mata[j][k]*matb[k][i];
-            }
-            matc[j][i] = l;
-        }
-    }
-
-}
-
-
 bool shape::inside(int x, int y)
 {
   //Translate the co-ordinates
@@ -120,5 +88,7 @@ bool shape::inside(int x, int y)
 
   return insideShape;
 }
+
+//virtual void shape::setSides(int i);
 
 

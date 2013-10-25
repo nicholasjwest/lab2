@@ -3,7 +3,8 @@
 
 #include "circle.h"
 #include "glwidget.h"
-#include "square.h"
+
+#include "stdio.h"
 
 const double GLWidget::ZMin = -10.0;
 const double GLWidget::ZMax = 10.0;
@@ -78,6 +79,8 @@ void GLWidget::resizeGL(int width, int height)
     glMatrixMode(GL_MODELVIEW);
 }
 
+
+
 void GLWidget::mousePressEvent(QMouseEvent* event)
 {
 
@@ -100,7 +103,7 @@ void GLWidget::mousePressEvent(QMouseEvent* event)
             //(note that "y" is different between QT and openGL)
             if(currentShape->inside(mClickLocationX, height()-mClickLocationY))
             {
-                mSelectedShape = currentShape;
+                mSelectedShape = nSelectedShape = currentShape;
                 updateGL();
                 return;
             }
@@ -157,20 +160,6 @@ void GLWidget::clear()
     updateGL();
 }
 
-void GLWidget::newSquare()
-{
-    const int defaultSquareSize = 100;
-
-    //Create a new square and make it a QSharedPointer
-    shape_ptr newSquare(new square(width()/2, height()/2,
-                                   mShapeColour, mHighlightColour, defaultSquareSize));
-
-    //Add it to the list of shapes
-    mShapes.push_back(newSquare);
-
-    updateGL();
-}
-
 
 void GLWidget::newCircle()
 {
@@ -183,5 +172,16 @@ void GLWidget::newCircle()
     //Add it to the list of shapes
     mShapes.push_back(newCircle);
 
+    updateGL();
+
+}
+
+void GLWidget::setSides(int i)
+{
+    if(nSelectedShape.isNull())
+    {
+        return;
+    }
+    nSelectedShape->setSides(i);
     updateGL();
 }

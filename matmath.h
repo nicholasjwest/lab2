@@ -1,13 +1,19 @@
 #ifndef MATMATH_H
 #define MATMATH_H
 
+#include "mat.h"
+#include "vect.h"
+
+
 class matmath
 {
 public:
     matmath();
-    struct vect {double x, y, z;};
-    struct mat {vect x, y, z;};
-    mat vectmatmult(vect a, mat b);
+    vect vectmatmult(vect a, mat b);
+    mat matmatmult(mat a, mat b);
+    mat scalermat(double b);
+    mat translatormat(double x, double y);
+    mat ident();
 };
 
 #endif // MATMATH_H

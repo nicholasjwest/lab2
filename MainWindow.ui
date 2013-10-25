@@ -17,7 +17,6 @@
    <item row="0" column="1">
     <widget class="GLWidget" name="widget" native="true">
      <zorder>frame</zorder>
-     <zorder>frame</zorder>
     </widget>
    </item>
    <item row="0" column="0">
@@ -57,7 +56,7 @@
         <enum>QLayout::SetNoConstraint</enum>
        </property>
        <item>
-        <widget class="QPushButton" name="newCirclePushButton">
+        <widget class="QPushButton" name="newShapeButton">
          <property name="text">
           <string>New Shape</string>
          </property>
@@ -98,10 +97,10 @@
      <widget class="QSpinBox" name="sidesBox">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>40</x>
         <y>140</y>
-        <width>41</width>
-        <height>24</height>
+        <width>71</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="minimum">
@@ -112,6 +111,217 @@
       </property>
       <property name="value">
        <number>5</number>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="scaleSpinBox">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>180</y>
+        <width>70</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <double>0.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>4.000000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>0.100000000000000</double>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="scaleButton">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>180</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Scale</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="sidesButton">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>140</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sides</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="colourB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>350</y>
+        <width>160</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="colourR">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>290</y>
+        <width>160</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>255</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="colourG">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>160</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>62</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Colour</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="colourLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>390</y>
+        <width>111</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Border Colour</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="sColourR">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>420</y>
+        <width>160</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="sliderPosition">
+       <number>0</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="sColourG">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>450</y>
+        <width>160</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="sColourB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>480</y>
+        <width>160</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="radiusButton">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>220</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Radius</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="radiusBox">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>220</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+      <property name="singleStep">
+       <number>10</number>
+      </property>
+      <property name="value">
+       <number>100</number>
       </property>
      </widget>
     </widget>
@@ -128,6 +338,8 @@
     <slot>newSquare()</slot>
     <slot>newCircle()</slot>
     <slot>setSides(int)</slot>
+    <slot>translate(double,double)</slot>
+    <slot>scale(double)</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -166,7 +378,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>newCirclePushButton</sender>
+   <sender>newShapeButton</sender>
    <signal>clicked()</signal>
    <receiver>widget</receiver>
    <slot>newCircle()</slot>
@@ -178,22 +390,6 @@
     <hint type="destinationlabel">
      <x>491</x>
      <y>423</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sidesBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>widget</receiver>
-   <slot>setSides(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>171</x>
-     <y>225</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>208</x>
-     <y>216</y>
     </hint>
    </hints>
   </connection>

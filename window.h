@@ -21,6 +21,7 @@ class Window : public QDialog, public Ui::frmMain
 public:
     //Constructor
     Window(QWidget *parent = 0);
+    GLWidget *nGLWidget;
 
 private:
     //GLWidget instance---by storing an instance, the widget is automatically created
@@ -30,6 +31,29 @@ private:
 private slots:
     void aboutBut();
     void pressmebut();
+
+    void on_scaleButton_clicked();
+
+
+    void on_sidesButton_clicked();
+
+    void colour_valueChanged();
+
+    void on_colourR_valueChanged(int value);
+
+    void on_colourG_valueChanged(int value);
+
+    void on_colourB_valueChanged(int value);
+
+    void on_sColourR_valueChanged(int value);
+
+    void on_sColourG_valueChanged(int value);
+
+    void on_sColourB_valueChanged(int value);
+
+    void on_newShapeButton_clicked();
+
+    void on_radiusButton_clicked();
 
 protected:
     // void  resizeEvent(QResizeEvent * );

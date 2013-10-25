@@ -16,15 +16,15 @@ vect matmath::vectmatmult(vect a, mat b){
 
 mat matmath::matmatmult(mat a, mat b){
     mat ans = mat();
-    ans.x.x = a.x.x*b.x.x + a.y.x*b.x.y + a.z.x*b.x.z;
-    ans.x.y = a.x.y*b.x.x + a.y.y*b.x.y + a.z.y*b.x.z;
-    ans.x.z = a.x.z*b.x.x + a.y.z*b.x.y + a.z.z*b.x.z;
-    ans.y.x = a.x.x*b.y.x + a.y.x*b.y.y + a.z.x*b.y.z;
-    ans.y.y = a.x.y*b.y.x + a.y.y*b.y.y + a.z.y*b.y.z;
-    ans.y.z = a.x.z*b.y.x + a.y.z*b.y.y + a.z.z*b.y.z;
-    ans.z.x = a.x.x*b.z.x + a.y.x*b.z.y + a.z.x*b.z.z;
-    ans.z.y = a.x.y*b.z.x + a.y.y*b.z.y + a.z.y*b.z.z;
-    ans.z.z = a.x.z*b.z.x + a.y.z*b.z.y + a.z.z*b.z.z;
+    ans.x.x = a.x.x*b.x.x + a.x.y*b.y.x + a.x.z*b.z.x;
+    ans.x.y = a.x.x*b.x.y + a.x.y*b.y.y + a.x.z*b.z.y;
+    ans.x.z = a.x.x*b.x.z + a.x.y*b.y.z + a.x.z*b.z.z;
+    ans.y.x = a.y.x*b.x.x + a.y.y*b.y.x + a.y.z*b.z.x;
+    ans.y.y = a.y.x*b.x.y + a.y.y*b.y.y + a.y.z*b.z.y;
+    ans.y.z = a.y.x*b.x.z + a.y.y*b.y.z + a.y.z*b.z.z;
+    ans.z.x = a.z.x*b.x.x + a.z.y*b.y.x + a.z.z*b.z.x;
+    ans.z.y = a.z.x*b.x.y + a.z.y*b.y.y + a.z.z*b.z.y;
+    ans.z.z = a.z.x*b.x.z + a.z.y*b.y.z + a.z.z*b.z.z;
     return ans;
 }
 

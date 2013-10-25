@@ -20,7 +20,14 @@ public:
 
     void translateBy(int X, int Y);
 
-    virtual void setSides(int i){}
+    virtual void setSides(int){}
+    virtual void scale(double){}
+    virtual void translate(double, double){}
+    virtual void changeColour(QColor, QColor){}
+    virtual void changeRadius(int){}
+
+    QColor mNormalColour;
+    QColor mSelectedColour;
 
     //This is a public method called to check if the co-ordinates are inside the shape
     bool inside(int x, int y);
@@ -38,8 +45,7 @@ private:
     int mYCentre;
     int sides;
 
-    QColor mNormalColour;
-    QColor mSelectedColour;
+
 };
 
 #endif 

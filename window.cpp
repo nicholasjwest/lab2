@@ -3,6 +3,7 @@
 #include <QtOpenGL>
 #include "version.h"
 #include "window.h"
+#include "circle.h"
 //#include "dfuncs.h"
 
 //------------------------------------------------------------------------------------
@@ -83,4 +84,75 @@ void Window::aboutBut()
 void Window::pressmebut()
 {
     std::cerr << "Don't press me!";
+}
+
+void Window::on_scaleButton_clicked()
+{
+    if(widget->nSelectedShape.isNull())
+    {
+        return;
+    }
+    widget->nSelectedShape->scale(this->scaleSpinBox->value());
+    widget->updateGL();
+}
+
+
+
+void Window::on_sidesButton_clicked()
+{
+    if(widget->nSelectedShape.isNull())
+    {
+        return;
+    }
+    widget->nSelectedShape->setSides(this->sidesBox->value());
+    widget->updateGL();
+}
+
+void Window::colour_valueChanged()
+{
+    QColor color = QColor(colourR->value(), colourG->value(), colourB->value());
+    QColor selectedcolor = QColor(sColourR->value(), sColourG->value(), sColourB->value());
+    widget->nSelectedShape->changeColour(color, selectedcolor);
+    widget->updateGL();
+}
+
+void Window::on_colourR_valueChanged(int value)
+{
+    colour_valueChanged();
+}
+
+void Window::on_colourG_valueChanged(int value)
+{
+    colour_valueChanged();
+}
+
+void Window::on_colourB_valueChanged(int value)
+{
+    colour_valueChanged();
+}
+
+void Window::on_sColourR_valueChanged(int value)
+{
+    colour_valueChanged();
+}
+
+void Window::on_sColourG_valueChanged(int value)
+{
+    colour_valueChanged();
+}
+
+void Window::on_sColourB_valueChanged(int value)
+{
+    colour_valueChanged();
+}
+
+void Window::on_newShapeButton_clicked()
+{
+    widget->newCircle(this->sidesBox->value(), this->radiusBox->value());
+}
+
+void Window::on_radiusButton_clicked()
+{
+    widget->nSelectedShape->changeRadius(this->radiusBox->value());
+    widget->updateGL();
 }

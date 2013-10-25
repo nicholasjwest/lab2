@@ -18,6 +18,7 @@ GLWidget::GLWidget(QWidget *parent)
 {
 }
 
+
 void GLWidget::initializeGL()
 {
     //Set the background colour to white and default depth
@@ -88,8 +89,8 @@ void GLWidget::mousePressEvent(QMouseEvent* event)
 
     if (button==Qt::LeftButton)
     {
-        mClickLocationX = event->x();
-        mClickLocationY = event->y();
+        mClickLocationX = 2*event->x();
+        mClickLocationY = 2*event->y();
 
         //See if the user clicked on a shape
         //(Shapes "on top" are last in the list so we iterate in reverse)
@@ -101,7 +102,7 @@ void GLWidget::mousePressEvent(QMouseEvent* event)
 
             //Check if a shape has been clicked on
             //(note that "y" is different between QT and openGL)
-            if(currentShape->inside(mClickLocationX, height()-mClickLocationY))
+            if(currentShape->inside(mClickLocationX, 2*height()-mClickLocationY))
             {
                 mSelectedShape = nSelectedShape = currentShape;
                 updateGL();
@@ -137,8 +138,8 @@ void GLWidget::mouseMoveEvent(QMouseEvent* event)
     if(buttons & Qt::LeftButton)
     {
         //The user is dragging the left mouse button
-        int mouseX = event->x();
-        int mouseY = event->y();
+        int mouseX = 2*event->x();
+        int mouseY = 2*event->y();
 
         //Move the shape (note that "y" is different between
         //QT and openGL)
@@ -171,6 +172,22 @@ void GLWidget::newCircle()
 
     //Add it to the list of shapes
     mShapes.push_back(newCircle);
+
+    updateGL();
+
+}
+
+void GLWidget::newCircle(int i, int r)
+{
+    const int defaultRadius = r;
+
+    //Create a new circle and make it a QSharedPointer
+    shape_ptr newCircle(new circle(width()/2, height()/2,
+                                   mShapeColour, mHighlightColour, defaultRadius));
+
+    //Add it to the list of shapes
+    mShapes.push_back(newCircle);
+    newCircle->setSides(i);
 
     updateGL();
 

@@ -9,13 +9,17 @@
 class circle : public shape
 {
 public:
-    circle (int XCentre, int YCentre, const QColor& colour,
-            const QColor& selectedColour, unsigned int radius);
+    circle (int XCentre, int YCentre, QColor& colour,
+            QColor& selectedColour, unsigned int radius);
     void setSides(int i);
     int sides;
     matmath matrixmath;
     mat matrix;
     mat transmat;
+    void scale(double d);
+    void translate(double x, double y);
+    void changeColour(QColor col, QColor selcol);
+    void changeRadius(int);
 
 private:
     //Implemented functions for drawing and checking if inside the shape, specified by the base class, shape

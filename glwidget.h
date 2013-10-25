@@ -20,6 +20,8 @@ class GLWidget : public QGLWidget
 public:
     //Constructor for GLWidget
     GLWidget(QWidget *parent = 0);
+    shape_ptr mSelectedShape;
+    shape_ptr nSelectedShape;
 
 protected:
     //This is called before the first call to paintGL() or resizeGL()
@@ -44,8 +46,7 @@ protected:
 private:
     std::list<shape_ptr> mShapes;
 
-    shape_ptr mSelectedShape;
-    shape_ptr nSelectedShape;
+
     //Store the location the user clicked
     int mClickLocationX;
     int mClickLocationY;
@@ -59,6 +60,7 @@ private:
 public slots:
     void clear();
     void newCircle();
+    void newCircle(int, int);
     void setSides(int i);
 };
 

@@ -5,8 +5,12 @@
 #include <QGLWidget>
 #include <QSharedPointer>
 #include <list>
+#include <stack>
+#include <sstream>
 
 #include "shape.h"
+#include "mat.h"
+
 
 //A shared pointer is a kind of smart pointer. It will call delete on our behalf
 //when the shape is finished with
@@ -22,6 +26,11 @@ public:
     GLWidget(QWidget *parent = 0);
     shape_ptr mSelectedShape;
     shape_ptr nSelectedShape;
+    std::stack <mat> matstack;
+    void matStack(mat matrix);
+    void deleteMat();
+    mat popMat();
+    void removeShape();
 
 protected:
     //This is called before the first call to paintGL() or resizeGL()

@@ -4,6 +4,7 @@
 #include "version.h"
 #include "window.h"
 #include "circle.h"
+#include <stdio.h>
 //#include "dfuncs.h"
 
 //------------------------------------------------------------------------------------
@@ -154,5 +155,66 @@ void Window::on_newShapeButton_clicked()
 void Window::on_radiusButton_clicked()
 {
     widget->nSelectedShape->changeRadius(this->radiusBox->value());
+    widget->updateGL();
+}
+
+void Window::on_removeButton_clicked()
+{
+    widget->removeShape();
+    widget->updateGL();
+}
+
+mat Window::matBuild()
+{
+    mat matrix = matrixmath.ident();
+    matrix.x.x = this->XX->value();
+    matrix.y.x = this->XY->value();
+    matrix.z.x = this->XZ->value();
+    matrix.x.y = this->YX->value();
+    matrix.y.y = this->YY->value();
+    matrix.z.y = this->YZ->value();
+    matrix.x.z = this->ZX->value();
+    matrix.y.z = this->ZY->value();
+    matrix.z.z = this->ZZ->value();
+    printf("matBuild\n%f, %f, %f\n", matrix.x.x, matrix.x.y, matrix.x.z);
+    printf("%f, %f, %f\n", matrix.y.x, matrix.y.y, matrix.y.z);
+    printf("%f, %f, %f\n", matrix.z.x, matrix.z.y, matrix.z.z);
+    return matrix;
+}
+
+void Window::on_stackButton_clicked()
+{
+    mat matrix = matBuild();
+    printf("Stack button clicked, matrix\n%f, %f, %f\n", matrix.x.x, matrix.x.y, matrix.x.z);
+    printf("%f, %f, %f\n", matrix.y.x, matrix.y.y, matrix.y.z);
+    printf("%f, %f, %f\n", matrix.z.x, matrix.z.y, matrix.z.z);
+    printf("Stack button clicked, id 1\n%f, %f, %f\n", id.x.x, id.x.y, id.x.z);
+    printf("%f, %f, %f\n", id.y.x, id.y.y, id.y.z);
+    printf("%f, %f, %f\n", id.z.x, id.z.y, id.z.z);
+    id = matrixmath.matmatmult(id, matrix);
+    printf("Stack button clicked, id 2\n%f, %f, %f\n", id.x.x, id.x.y, id.x.z);
+    printf("%f, %f, %f\n", id.y.x, id.y.y, id.y.z);
+    printf("%f, %f, %f\n", id.z.x, id.z.y, id.z.z);
+}
+
+void Window::on_stackinateButton_clicked()
+{
+    if (widget->nSelectedShape.isNull())
+    {
+        return;
+    }
+    widget->nSelectedShape->matricise(id);
+    id = matrixmath.ident();
+    widget->updateGL();
+}
+
+
+void Window::on_transButton_clicked()
+{
+    if (widget->nSelectedShape.isNull())
+    {
+        return;
+    }
+    widget->nSelectedShape->translate(this->xSpinBox->value(), this->ySpinBox->value());
     widget->updateGL();
 }

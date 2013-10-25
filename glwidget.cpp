@@ -4,7 +4,9 @@
 #include "circle.h"
 #include "glwidget.h"
 
-#include "stdio.h"
+#include <stdio.h>
+#include <stack>
+#include <sstream>
 
 const double GLWidget::ZMin = -10.0;
 const double GLWidget::ZMax = 10.0;
@@ -108,6 +110,10 @@ void GLWidget::mousePressEvent(QMouseEvent* event)
                 updateGL();
                 return;
             }
+            else
+            {
+                nSelectedShape.clear();
+            }
         }
 
         //Nothing has been clicked on so deselect (set to null)
@@ -202,3 +208,30 @@ void GLWidget::setSides(int i)
     nSelectedShape->setSides(i);
     updateGL();
 }
+
+void GLWidget::matStack(mat matrix)
+{
+    matstack.push(matrix);
+}
+
+void GLWidget::deleteMat() {
+    matstack.pop();
+}
+
+mat GLWidget::popMat() {
+    mat x = matstack.top();
+    matstack.pop();
+    return x;
+}
+
+void GLWidget::removeShape() {
+    if (nSelectedShape.isNull())
+    {
+        return;
+    }
+    nSelectedShape->changeRadius(0.0);
+    nSelectedShape.clear();
+    this->updateGL();
+}
+
+

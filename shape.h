@@ -2,6 +2,7 @@
 #define SHAPE_H_
 
 #include <QtOpenGL>
+#include "mat.h"
 
 class shape
 {
@@ -25,6 +26,7 @@ public:
     virtual void translate(double, double){}
     virtual void changeColour(QColor, QColor){}
     virtual void changeRadius(int){}
+    virtual void matricise(mat){}
 
     QColor mNormalColour;
     QColor mSelectedColour;

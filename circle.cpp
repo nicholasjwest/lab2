@@ -1,5 +1,6 @@
 #include <QtCore/qmath.h>
 #include <stdio.h>
+#include <math.h>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846264338327950288419717
@@ -20,21 +21,13 @@ circle::circle(int XCentre, int YCentre, QColor& colour,
 }
 
 void circle::scale(double d) {
-    /*printf("1st\n%f, %f, %f\n", transmat.x.x, transmat.x.y, transmat.x.z);
-    printf("%f, %f, %f\n", transmat.y.x, transmat.y.y, transmat.y.z);
-    printf("%f, %f, %f\n", transmat.z.x, transmat.z.y, transmat.z.z);
-    printf("1st\n%f, %f, %f\n", matrixmath.scalermat(d).x.x, matrixmath.scalermat(d).x.y, matrixmath.scalermat(d).x.z);
-    printf("%f, %f, %f\n", matrixmath.scalermat(d).y.x, matrixmath.scalermat(d).y.y, matrixmath.scalermat(d).y.z);
-    printf("%f, %f, %f\n", matrixmath.scalermat(d).z.x, matrixmath.scalermat(d).z.y, matrixmath.scalermat(d).z.z);*/
-    transmat = matrixmath.matmatmult(transmat, matrixmath.scalermat(d));
-    /*printf("2nd\n%f, %f, %f\n", transmat.x.x, transmat.x.y, transmat.x.z);
-    printf("%f, %f, %f\n", transmat.y.x, transmat.y.y, transmat.y.z);
-    printf("%f, %f, %f\n", transmat.z.x, transmat.z.y, transmat.z.z);*/
-    fflush(stdout);
+    mat matter = matrixmath.matmatmult(transmat, matrixmath.scalermat(d));
+    transmat = matter;
 }
 
 void circle::translate(double x, double y) {
-    transmat = matrixmath.matmatmult(transmat, matrixmath.translatormat(x,y));
+    mat matter = matrixmath.matmatmult(transmat, matrixmath.translatormat(x,y));
+    transmat = matter;
 }
 
 void circle::changeRadius(int r)
@@ -82,9 +75,23 @@ void circle::setSides(int i)
     this->draw(1);
 }
 
+void circle::matricise(mat matrix)
+{
+    mat matter = matrixmath.matmatmult(transmat, matrix);
+    transmat = matter;
+}
+
 bool circle::insideZeroCentredShape(int x, int y)
 {
     float distFromCentre = qSqrt(x*x+y*y);
 
-    return (distFromCentre <= mRadius);
+    vect a = vect();
+    a.x = a.y = mRadius;
+    a.z = 1;
+    vect b = matrixmath.vectmatmult(a, transmat);
+    a.x = x;
+    a.y = y;
+    fflush(stdout);
+
+    return ((abs(a.x)<abs(b.x)) && (abs(a.y)<abs(b.y)));
 }

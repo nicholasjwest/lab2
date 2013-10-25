@@ -20,6 +20,7 @@ public:
     void translate(double x, double y);
     void changeColour(QColor col, QColor selcol);
     void changeRadius(int);
+    void matricise(mat);
 
 private:
     //Implemented functions for drawing and checking if inside the shape, specified by the base class, shape

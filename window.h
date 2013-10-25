@@ -10,6 +10,8 @@
 #include <QColorDialog>
 #include "ui_MainWindow.h"
 #include "glwidget.h"
+#include "mat.h"
+#include "matmath.h"
 
 class GLWidget;
 
@@ -22,6 +24,9 @@ public:
     //Constructor
     Window(QWidget *parent = 0);
     GLWidget *nGLWidget;
+    matmath matrixmath;
+    mat id = matrixmath.ident();
+    mat matBuild();
 
 private:
     //GLWidget instance---by storing an instance, the widget is automatically created
@@ -54,6 +59,17 @@ private slots:
     void on_newShapeButton_clicked();
 
     void on_radiusButton_clicked();
+
+
+    void on_removeButton_clicked();
+
+    void on_stackButton_clicked();
+
+    void on_stackinateButton_clicked();
+
+
+    void on_transButton_clicked();
+
 
 protected:
     // void  resizeEvent(QResizeEvent * );

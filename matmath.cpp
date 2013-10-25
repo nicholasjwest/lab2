@@ -15,7 +15,7 @@ vect matmath::vectmatmult(vect a, mat b){
 }
 
 mat matmath::matmatmult(mat a, mat b){
-    mat ans = mat();
+    mat ans = ident();
     ans.x.x = a.x.x*b.x.x + a.x.y*b.y.x + a.x.z*b.z.x;
     ans.x.y = a.x.x*b.x.y + a.x.y*b.y.y + a.x.z*b.z.y;
     ans.x.z = a.x.x*b.x.z + a.x.y*b.y.z + a.x.z*b.z.z;
@@ -29,7 +29,7 @@ mat matmath::matmatmult(mat a, mat b){
 }
 
 mat matmath::scalermat(double b) {
-    mat ans = mat();
+    mat ans = ident();
     ans.x.x = b;
     ans.y.y = b;
     ans.z.z = 1;
@@ -37,7 +37,7 @@ mat matmath::scalermat(double b) {
 }
 
 mat matmath::translatormat(double x, double y) {
-    mat ans = mat();
+    mat ans = ident();
     ans.x.z = x;
     ans.y.z = y;
     ans.x.x = ans.y.y = 1.0;
